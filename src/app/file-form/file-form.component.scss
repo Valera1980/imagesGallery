@@ -1,0 +1,52 @@
+.file-form{
+    border: 1px solid;
+    height: auto;
+    width: 350px;
+    background-color:#ffffff ;
+    border-radius: 8px;
+    margin: 5px;
+    &__header {
+        padding: 8px;
+    }
+    &__header-label{
+        font-size: 16px;
+    }
+    &__header-file-name {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    &__horizont-controls {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: flex-start;
+    }
+    &__empty-area{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: dashed 0.5px;
+        border-radius: 16px;
+        width: 320px;
+        height: 290px;
+    }
+    &__preview-area {
+        
+        padding: 8px;
+        height: 300px;
+    }
+    &__footer {
+        padding: 8px;
+        text-align: center;
+    }
+    &__content {
+       padding: 8px;
+    }
+    &__control-item-wrapper {
+        padding: 4px;
+    }
+    &__control-item {
+        padding: 8px;
+        width: 100%;
+    }
+}

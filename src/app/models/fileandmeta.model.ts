@@ -1,19 +1,26 @@
 export interface IFileAndMeta {
     readonly comment: string;
-    readonly created: Date;
+    readonly created: Date|string;
     readonly file: any; // Blob
     readonly id: number | string;
     readonly isNew: boolean;
     readonly name: string;
+    readonly size: number;
+    readonly type: string;
+    readonly url: string;
 }
 
 export class ModelFileAndMeta implements IFileAndMeta {
     readonly comment: string;
-    readonly created: Date;
+    readonly created: Date | string;
     readonly file: any; // Blob
     readonly id: number | string;
     readonly isNew: boolean;
     readonly name: string;
+    readonly size: number;
+    readonly type: string;
+    readonly url: string;
+
     constructor({
         comment,
         created,
@@ -21,6 +28,9 @@ export class ModelFileAndMeta implements IFileAndMeta {
         id,
         isNew,
         name,
+        size = 0,
+        type = '',
+        url = ''
     }: Partial<IFileAndMeta> = {}) {
         this.name = name;
         this.id = id;
@@ -28,6 +38,9 @@ export class ModelFileAndMeta implements IFileAndMeta {
         this.comment = comment;
         this.created = created;
         this.file = file; // Blob
+        this.size = size;
+        this.type = type;
+        this.url =  url;
     }
     serialize(): IFileAndMeta {
         return {
@@ -37,6 +50,9 @@ export class ModelFileAndMeta implements IFileAndMeta {
             comment: this.comment,
             created: this.created,
             file: this.file, // Blob
+            size: this.size,
+            type: this.type,
+            url: this.url
         };
     }
 }

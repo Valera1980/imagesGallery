@@ -1,1 +1,18 @@
-<p>gallery-form works!</p>
+<div class="formgallery" [formGroup]="formGallery">
+   <div class="formgallery__header">
+       <button (click)="addFileAndMeta()">add file</button>
+   </div>
+   <div class="formgallery__controls">
+     <div class="formgallery__controls-wrapper">
+         <label for="gallName">Название галереи</label>
+         <input class="formgallery__form-control" formControlName="name" #gallName>
+     </div>
+   </div>
+   <div class="formgallery__files-list" #dropArea >
+    <div formArrayName="files" *ngFor="let controlItem of files.controls; let i = index;">
+        <div [formGroupName]="i">
+            <app-file-form [fileControlItem]="controlItem"></app-file-form>
+        </div>
+    </div>
+   </div>
+</div>

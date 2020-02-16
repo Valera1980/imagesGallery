@@ -1,0 +1,15 @@
+<div class=file>
+    <input class="file__input"
+        multiple
+        #fileInput
+        (change)="uploadFile($event)"
+        type="file"
+        >
+    <button
+      value="Browse..." 
+      (click)="invokeDialog()" >
+        <img src="../../assets/icons/upload.png">
+    </button> 
+
+
+</div>
