@@ -1,7 +1,17 @@
 import { IFileMeta } from './../models/filemeta';
 import { FileReaderService } from './../services/fileReader/file-reader.service';
 import { ModelFileAndMeta } from './../models/fileandmeta.model';
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
 import { fromEvent } from 'rxjs';
@@ -18,6 +28,7 @@ export class GalleryFormComponent implements OnInit, AfterViewInit {
 
   formGallery: FormGroup;
   @ViewChild('dropArea') dropArea: ElementRef<HTMLDivElement>;
+  @Output() eventSave = new EventEmitter();
 
   constructor(
     private _fb: FormBuilder,
@@ -43,7 +54,7 @@ export class GalleryFormComponent implements OnInit, AfterViewInit {
         console.log('DROP', evt);
         const files = evt.dataTransfer.files; // FileList object.
         console.log(files);
-        this.addDropFiles(files)
+        this.addDropFiles(files);
 
       });
   }
@@ -94,22 +105,43 @@ export class GalleryFormComponent implements OnInit, AfterViewInit {
     this._cd.detectChanges();
   }
   addDropFiles(files: any): void {
-     const data = this._fileReader.readTwo(files)
-     .subscribe((filesData: IFileMeta[]) => {
-       for(const file of filesData){
-         const model = new ModelFileAndMeta({
-           id: UUID.UUID(),
-           isNew: true,
-           name: file.name,
-           size: file.size,
-           type: file.type,
-           file: file.file,
-           created: new Date(),
-           comment: 'from d&d'
-         });
-         this.addFileAndMeta(model);
-       }
-    });
+    // const data = this._fileReader.readTwo(files)
+    for (const file of files) {
+      const model = new ModelFileAndMeta({
+        id: UUID.UUID(),
+        isNew: true,
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        file,
+        created: new Date(),
+        comment: 'from d&d'
+      });
+      this.addFileAndMeta(model);
+    }
+
+  }
+  addDropFilesOld(files: any): void {
+    // const data = this._fileReader.readTwo(files)
+    const data = this._fileReader.readTwo(files)
+      .subscribe((filesData: IFileMeta[]) => {
+        for (const file of filesData) {
+          const model = new ModelFileAndMeta({
+            id: UUID.UUID(),
+            isNew: true,
+            name: file.name,
+            size: file.size,
+            type: file.type,
+            file: file.file,
+            created: new Date(),
+            comment: 'from d&d'
+          });
+          this.addFileAndMeta(model);
+        }
+      });
+  }
+  save(): void {
+    this.eventSave.emit(this.formGallery.value);
   }
 
 }

@@ -25,6 +25,7 @@ export class FileReaderService {
         o.complete();
       };
       reader.readAsDataURL(file);
+      // reader.readAsArrayBuffer(file);
     });
   }
 

@@ -1,7 +1,7 @@
 export interface IFileAndMeta {
     readonly comment: string;
-    readonly created: Date|string;
-    readonly file: any; // Blob
+    readonly created: Date | string;
+    readonly file: File; // Blob
     readonly id: number | string;
     readonly isNew: boolean;
     readonly name: string;
@@ -13,7 +13,7 @@ export interface IFileAndMeta {
 export class ModelFileAndMeta implements IFileAndMeta {
     readonly comment: string;
     readonly created: Date | string;
-    readonly file: any; // Blob
+    readonly file: File; // Blob
     readonly id: number | string;
     readonly isNew: boolean;
     readonly name: string;
@@ -40,7 +40,7 @@ export class ModelFileAndMeta implements IFileAndMeta {
         this.file = file; // Blob
         this.size = size;
         this.type = type;
-        this.url =  url;
+        this.url = url;
     }
     serialize(): IFileAndMeta {
         return {

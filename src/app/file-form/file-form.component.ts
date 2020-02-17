@@ -16,9 +16,21 @@ export class FileFormComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  readFile(file: IFileMeta): void {
+  readFile(files: IFileMeta[]): void {
+    const file = files[0];
     this.fileControlItem.patchValue({
-      file: file.file,
+      file: new File(file.file, '0000'),
+      name: file.name,
+      size: file.size,
+      type: file.type,
+      url: file.url
+    });
+    this._cd.detectChanges();
+  }
+  readFileRaw(files: any[]): void {
+    const file = files[0];
+    this.fileControlItem.patchValue({
+      file,
       name: file.name,
       size: file.size,
       type: file.type,

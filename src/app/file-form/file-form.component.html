@@ -3,18 +3,18 @@
 
     <div class="file-form__header">
         <span class="file-form__header-label">
-          Файл: 
+            Файл:
         </span>
-        <span class="file-form__header-file-name" >
+        <span class="file-form__header-file-name">
             "{{name.value}}"
         </span>
     </div>
     <div class="file-form__content">
         <div class="file-form__preview-area">
             <div class="file-form__empty-area" *ngIf="!file.value">
-                <app-file (eventRead)="readFile($event)"></app-file>
+                <app-file (eventRead)="readFile($event)" (eventReadRaw)="readFileRaw($event)"></app-file>
             </div>
-           <img src="{{file.value}}" height="auto" width="320">
+            <img src="{{file.value}}" height="auto" width="320">
         </div>
         <div class="file-form__control-item-wrapper">
             <input class="file-form__control-item" formControlName="id" hidden>
@@ -45,7 +45,8 @@
         </div>
         <div class="file-form__control-item-wrapper">
             <label>Коммент</label>
-            <textarea class="file-form__control-item" style="resize: none;" formControlName="comment" #commentFile></textarea>
+            <textarea class="file-form__control-item" style="resize: none;" formControlName="comment"
+                #commentFile></textarea>
         </div>
     </div>
     <div class="file-form__footer">

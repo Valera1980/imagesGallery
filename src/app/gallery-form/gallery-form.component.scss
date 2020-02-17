@@ -1,20 +1,29 @@
 .formgallery {
-    &__header{
-
-    }
-    &__controls {
-    }
-    &__form-control {
-    }
-    &__controls-wrapper {
-        padding: 8px;
-        width: 400px;
-        margin-bottom: 8px;
-    }
-    &__files-list{
-        padding: 16px;
-        background-color: #e0e0eb;
-        display: flex;
-        min-height: 800px;
-    }
+  &__header {
+  }
+  &__menu-section {
+    padding: 8px;
+  }
+  &__button {
+    margin-left: 8px;
+  }
+  &__controls {
+  }
+  &__form-control {
+  }
+  &__form-control-label {
+    margin-right: 8px;
+  }
+  &__controls-wrapper {
+    padding: 8px;
+    width: 400px;
+    margin-bottom: 8px;
+  }
+  &__files-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    background-color: #e0e0eb;
+    min-height: 800px;
+  }
 }

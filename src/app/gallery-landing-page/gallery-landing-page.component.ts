@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SavefileService } from '../services/savefile/savefile.service';
 
 @Component({
   selector: 'app-gallery-landing-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryLandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _saveFile: SavefileService
+  ) { }
 
   ngOnInit(): void {
+  }
+  save(data): void {
+    console.log(data);
+    this._saveFile.querySaveFiles(data)
+      // this._saveFile.querySave(data)
+      .subscribe();
   }
 
 }

@@ -1,4 +1,4 @@
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,8 +13,10 @@ import { GalleryLandingPageComponent } from './gallery-landing-page/gallery-land
 import { GalleryFormComponent } from './gallery-form/gallery-form.component';
 import { FileFormComponent } from './file-form/file-form.component';
 import { CalendarModule } from 'primeng/calendar';
-import { FileUploadModule } from 'primeng/fileupload';
 import { FileComponent } from './file/file.component';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+
 
 
 @NgModule({
@@ -31,9 +33,10 @@ import { FileComponent } from './file/file.component';
     ReactiveFormsModule,
     CardModule,
     CalendarModule,
-    FileUploadModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ButtonModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,13 +14,13 @@ export class ModelGallery implements IGallery {
     }: Partial<IGallery> = {}) {
         this.name = name;
         this.files = isArrayOfModelFileAndMeta(files) ?
-                                     files :
-                                     files.map(i => new ModelFileAndMeta());
+            files :
+            files.map(i => new ModelFileAndMeta());
     }
     serialize(): IGallery {
         return {
             name: this.name,
-            files: this.files, // Blob
+            files: this.files.map(f => f.serialize()), // Blob
         };
     }
 }

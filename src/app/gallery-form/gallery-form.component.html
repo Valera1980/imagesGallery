@@ -1,18 +1,21 @@
 <div class="formgallery" [formGroup]="formGallery">
-   <div class="formgallery__header">
-       <button (click)="addFileAndMeta()">add file</button>
-   </div>
-   <div class="formgallery__controls">
-     <div class="formgallery__controls-wrapper">
-         <label for="gallName">Название галереи</label>
-         <input class="formgallery__form-control" formControlName="name" #gallName>
-     </div>
-   </div>
-   <div class="formgallery__files-list" #dropArea >
-    <div formArrayName="files" *ngFor="let controlItem of files.controls; let i = index;">
-        <div [formGroupName]="i">
-            <app-file-form [fileControlItem]="controlItem"></app-file-form>
+    <div class="formgallery__header">
+        <div class="formgallery__menu-section">
+            <p-button class="formgallery__button" (click)="addFileAndMeta()" label="add file"></p-button>
+            <p-button class="formgallery__button" (click)="save()" label="save"></p-button>
         </div>
     </div>
-   </div>
+    <div class="formgallery__controls">
+        <div class="formgallery__controls-wrapper">
+            <label class="formgallery__form-control-label" for="gallName">Название галереи</label>
+            <input pInputText class="formgallery__form-control" formControlName="name" #gallName>
+        </div>
+    </div>
+    <div class="formgallery__files-list" #dropArea>
+        <div formArrayName="files" *ngFor="let controlItem of files.controls; let i = index;">
+            <div [formGroupName]="i">
+                <app-file-form [fileControlItem]="controlItem"></app-file-form>
+            </div>
+        </div>
+    </div>
 </div>
